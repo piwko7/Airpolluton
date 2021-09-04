@@ -8,6 +8,7 @@ class MyApp(models.Model):
     name = models.CharField(max_length=64, unique=True)
     description = models.TextField(default='', blank=True, max_length=10000)
     image = models.ImageField(upload_to='my_apps')
+    url = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='my_apps')
 
@@ -15,5 +16,8 @@ class MyApp(models.Model):
         return f'MyApp {self.id} {self.name}'
 
     class Meta:
+
+
+
         verbose_name_plural = 'My Apps'
         ordering = ['name']
