@@ -1,6 +1,8 @@
 from django.urls import path
 from .views import welcome
 
+app_name = 'airpollution'
+
 urlpatterns = [
-    path('', welcome, name='airpollution_welcome'),
+    path('', welcome, name='welcome'),
 ]
