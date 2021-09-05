@@ -1,1 +1,71 @@
 {% extends 'base.html' %}
+
+{% block content %}
+<!-- Upload file selection-->
+<section class="page-section mt-5" id="import-form">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Upload file</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Upload File Section Form-->
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7">
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- * * SB Forms Contact Form * *-->
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- This form is pre-integrated with SB Forms.-->
+                <!-- To make this form functional, sign up at-->
+                <!-- https://startbootstrap.com/solution/contact-forms-->
+                <!-- to get an API token!-->
+                <form data-sb-form-api-token="API_TOKEN" id="upload-file" enctype="multipart/form-data" method="POST"
+                      action="{% url 'airpollution:upload_file' %}">
+                    {% csrf_token %}
+                    <!-- Name input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" data-sb-validations="required" id="year" name="year" placeholder="Year"
+                               type="number"/>
+                        <label for="year">Year</label>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                    </div>
+                    <!-- Email address input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" data-sb-validations="required:file" id="file" name="file"
+                               type="file"/>
+                        <label for="file">File</label>
+                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                    </div>
+
+
+                    <!-- Submit success message-->
+                    <!---->
+                    <!-- This is what your users will see when the form-->
+                    <!-- has successfully submitted-->
+                    <div class="success" id="submitSuccessMessage">
+                        <div class="text-center mb-3">
+                            <div class="fw-bolder">{{ message_success }}</div>
+                            To activate this form, sign up at
+                            <br/>
+                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                        </div>
+                    </div>
+                    <!-- Submit error message-->
+                    <!---->
+                    <!-- This is what your users will see when there is-->
+                    <!-- an error submitting the form-->
+                    <div class="error" id="submitErrorMessage">
+                        <div class="text-center text-danger mb-3">Error sending message!</div>
+                    </div>
+                    <!-- Submit Button-->
+                    <button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit">Upload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

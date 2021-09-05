@@ -17,6 +17,8 @@ class Pollutant(models.Model):
 
 class Country(models.Model):
     """Country model for airpollution app"""
+
+    iso_code = models.CharField(max_length=2, primary_key=True)
     name = models.CharField(max_length=100, unique=True)
     removed = models.BooleanField(default=False)
     longitude = models.FloatField(null=True)
@@ -31,6 +33,7 @@ class Country(models.Model):
 
 class PollutantEntry(models.Model):
     """PolutantEntry model for airpollution app"""
+
     pollutant = models.ForeignKey(Pollutant, on_delete=models.CASCADE, related_name='entries')
     country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='entries')
     year = models.IntegerField()
