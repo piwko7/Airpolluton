@@ -6,6 +6,7 @@ from django.db import models
 class Pollutant(models.Model):
     """Pollution model for airpollution app"""
     name = models.CharField(max_length=10, primary_key=True)
+    limit_value = models.SmallIntegerField(null=True)
     removed = models.BooleanField(default=False)
 
     def __str__(self):
@@ -40,7 +41,7 @@ class PollutantEntry(models.Model):
     city = models.CharField(max_length=50, default='', blank=True)
     station_code = models.CharField(max_length=20, default='', blank=True)
     station_name = models.CharField(max_length=100, default='', blank=True)
-    pollution_level = models.IntegerField()
+    pollution_level = models.FloatField()
     units = models.CharField(max_length=10, default='', blank=True)
     station_type = models.CharField(max_length=20, default='', blank=True)
     station_area = models.CharField(max_length=20, default='', blank=True)

@@ -35,6 +35,8 @@ def get_headers_and_units(work_sheet):
         # iterate over capital letters from CSV ('A', 'B' ...)
         column = chr(i + 65)
         header = work_sheet[column][headers_row].value
+        if header is None:
+            break
         header = header.strip().replace('_', '').lower()
 
         # get units (Different in some year, 2014 vs 2016 ex.)
@@ -44,10 +46,11 @@ def get_headers_and_units(work_sheet):
                 if header[index] == ')':
                     break
                 units += header[index]
-            continue
         elif 'unit' in header:
             units = work_sheet[column][headers_row + 1].value
             continue
+
+        units = units if units != 'count' else 'µg/m3'
 
         # Map headers with their indices
         for choice in XLEHEADERS.choices:
