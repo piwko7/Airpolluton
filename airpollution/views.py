@@ -20,10 +20,9 @@ class ExcelUploadForm(forms.Form):
     file = forms.FileField()
 
 
-def airpollution(request):
+def upload(request):
     context = {
-        'app_name': request.resolver_match.app_name,
-        'pollutant_list': [p.name for p in Pollutant.objects.all()]
+        'app_name': request.resolver_match.app_name
     }
 
     if request.method == 'GET':
@@ -91,8 +90,22 @@ def airpollution(request):
     else:
         return HttpResponse('This view only handles GET and POST request')
 
-    return render(request, 'airpollution/welcome.html', context)
+    return render(request, 'airpollution/upload.html', context)
 
+def table(request):
+    context = {
+        'app_name': request.resolver_match.app_name
+    }
+
+    return render(request, 'airpollution/table.html', context)
+
+
+def charts(request):
+    context = {
+        'app_name': request.resolver_match.app_name
+    }
+
+    return render(request, 'airpollution/charts.html', context)
 
 def airpollution_table_data(request):
     table_data = {}
