@@ -22,8 +22,9 @@
     <!-- Custom styles for this template-->
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
 
-    <!-- Custom styles for this page -->
-    <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+    {% block head %}
+    {% endblock %}
+
 
 </head>
 
@@ -47,7 +48,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            {% url 'website:samples' as samples %}
+            <li class="nav-item {% if page_path == samples %} active {% endif %}">
                 <a class="nav-link" href="{% url 'website:samples' %}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Samples</span></a>
@@ -58,23 +60,30 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Apps
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item {% if app_name == 'airpollution' %} active {% endif %}">
                 <a class="nav-link {% if app_name != 'airpollution' %} collapsed  {% endif %}" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Airpollution App</span>
                 </a>
-                <div id="collapseTwo" class="collapse {% if app_name == 'airpollution' %} show {% endif %}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse {% if app_name == 'airpollution' %} show {% endif %}"
+                     aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Upload data:</h6>
-                        <a class="collapse-item" href="{% url 'airpollution:upload' %}">Upload</a>
+                        {% url 'airpollution:upload' as airpollution_upload %}
+                        <a class="collapse-item {% if page_path == airpollution_upload %} active {% endif %}"
+                           href="{% url 'airpollution:upload' %}">Upload</a>
                         <h6 class="collapse-header">View data:</h6>
-                        <a class="collapse-item" href="{% url 'airpollution:table' %}">Table</a>
-                        <a class="collapse-item" href="{% url 'airpollution:charts' %}">Charts</a>
+                        {% url 'airpollution:table' as airpollution_table %}
+                        <a class="collapse-item {% if page_path == airpollution_table %} active {% endif %}"
+                           href="{% url 'airpollution:table' %}">Table</a>
+                        {% url 'airpollution:charts' as airpollution_charts %}
+                        <a class="collapse-item {% if page_path == airpollution_charts %} active {% endif %}"
+                           href="{% url 'airpollution:charts' %}">Charts</a>
                     </div>
                 </div>
             </li>
@@ -270,7 +279,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="{% static 'img/undraw_profile.svg' %}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -302,7 +311,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                    {% include 'common/messages.html' %}
                     {% block content %}
                     {% endblock %}
 
@@ -316,7 +325,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Portfolio {{ today.year }}</span>
                     </div>
                 </div>
             </footer>
@@ -361,7 +370,7 @@
     <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{% static 'js/sb-admin-2.min.jss' %}"></script>
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
 
     {% block js %}
     {% endblock %}

@@ -1,0 +1,24 @@
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{% if message.tags == 'info' %} primary {% elif message.tags == 'error' %} danger {% else %}{{ message.tags }}{% endif %}" role="alert">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+
+
+<!--<div class="alert alert-primary" role="alert">-->
+<!--  This is a primary alert—check it out!-->
+<!--</div>-->
+
+<!--<div class="alert alert-success" role="alert">-->
+<!--  This is a success alert—check it out!-->
+<!--</div>-->
+
+<!--<div class="alert alert-danger" role="alert">-->
+<!--  This is a danger alert—check it out!-->
+<!--</div>-->
+
+<!--<div class="alert alert-warning" role="alert">-->
+<!--  This is a warning alert—check it out!-->
+<!--</div>-->

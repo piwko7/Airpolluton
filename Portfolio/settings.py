@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'website',
     'accounts',
     'airpollution',
+    'my_finances',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'misc.context_processors.add_custom_context',
             ],
         },
     },
