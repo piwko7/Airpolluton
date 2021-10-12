@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- Upload File Section Form-->
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7">
+
+                <h1>Income {{ object.pk }}</h1>
+                <form method="post">{% csrf_token %}
+                    <p>Are you sure you want to delete "{{ object }}"?</p>
+                    <input type="submit" value="Confirm">
+                </form>
+
+            </div>
+        </div>
+
+{% endblock %}

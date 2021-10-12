@@ -23,12 +23,12 @@ class Income(models.Model):
     date = models.DateField()
     type = models.PositiveSmallIntegerField(choices=IncomeTypes.choices)
     repetitive = models.BooleanField(default=False)
-    repetition_interval = models.PositiveSmallIntegerField(RepetitiveInterval.choices, default=1)
+    repetition_interval = models.PositiveSmallIntegerField(choices=RepetitiveInterval.choices, default=1)
     repetition_time = models.PositiveSmallIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Income {self.id} - {self.type} {self.date.strftime("%Y/%d/%d")}'
+        return f'Income {self.id} - {self.type} - {self.date.strftime("%Y/%d/%d")}'
 
     class Meta:
         verbose_name_plural = 'incomes'
@@ -57,12 +57,12 @@ class Outcome(models.Model):
     date = models.DateField()
     type = models.PositiveSmallIntegerField(choices=OutcomeTypes.choices)
     repetitive = models.BooleanField(default=False)
-    repetition_interval = models.PositiveSmallIntegerField(RepetitiveInterval.choices, default=1)
+    repetition_interval = models.PositiveSmallIntegerField(choices=RepetitiveInterval.choices, default=1)
     repetition_time = models.PositiveSmallIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Outcome {self.id} - {self.type} {self.date.strftime("%Y/%d/%d")}'
+        return f'Outcome {self.id} - {self.type} - {self.date.strftime("%Y/%d/%d")}'
 
     class Meta:
         verbose_name_plural = 'outcomes'
