@@ -6,9 +6,10 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-7">
 
+                <h1>{{ delete_what }} {{ object.pk }}</h1>
                 <form method="post">{% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit" value="Submit">
+                    <p>Are you sure you want to delete "{{ object }}"?</p>
+                    <input type="submit" value="Confirm">
                 </form>
 
             </div>
