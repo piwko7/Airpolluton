@@ -3,6 +3,7 @@ Portfolio project with two app:
 - airpoultion analizer (collecting and analyzing data form CSV file from https://www.eea.europa.eu/data-and-maps/data/air-pollutant-concentrations-at-station)
 - financial app to controll private finances (in work...)
 
+To see financal app you have to login or create account.
 For financial app you can use created profile:
 - login: test1@gmail.com password: Passwordtest1
 - login: kkowal@gmail.com password: Passwordtest2!
