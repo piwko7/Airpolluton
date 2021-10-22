@@ -87,8 +87,7 @@ DATABASES = {
     }
 }
 import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+DATABASES['default'] = dj_database_url('postgres://hivifuxyvmjzui:431390f1b7045205f664fb1d07fddee15292d1a15fca758409ef97006c96e237@ec2-54-217-15-9.eu-west-1.compute.amazonaws.com:5432/d4s4rba6gss3b9')
 
 
 # Password validation
