@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'Portfolio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': BASE_DIR / 'd4s4rba6gss3b9',
+        'NAME': 'd4s4rba6gss3b9',
         'HOST': 'ec2-54-217-15-9.eu-west-1.compute.amazonaws.com',
         'PORT': 5432,
         'USER': 'hivifuxyvmjzui',
