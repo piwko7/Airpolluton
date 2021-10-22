@@ -80,14 +80,27 @@ WSGI_APPLICATION = 'Portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# #LOCAL
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# postgres://hivifuxyvmjzui:431390f1b7045205f664fb1d07fddee15292d1a15fca758409ef97006c96e237@ec2-54-217-15-9.eu-west-1.compute.amazonaws.com:5432/d4s4rba6gss3b9
+
+#REMOTE
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': BASE_DIR / 'd4s4rba6gss3b9',
+        'HOST': 'ec2-54-217-15-9.eu-west-1.compute.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'hivifuxyvmjzui',
+        'PASSWORD': '431390f1b7045205f664fb1d07fddee15292d1a15fca758409ef97006c96e237',
     }
 }
-import dj_database_url
-DATABASES['default'] = dj_database_url('postgres://hivifuxyvmjzui:431390f1b7045205f664fb1d07fddee15292d1a15fca758409ef97006c96e237@ec2-54-217-15-9.eu-west-1.compute.amazonaws.com:5432/d4s4rba6gss3b9')
 
 
 # Password validation
