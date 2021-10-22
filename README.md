@@ -6,3 +6,7 @@ Portfolio project with two app:
 For financial app you can use created profile:
 login: test1@gmail.com
 password: Passwordtest1
+or:
+login: kkowal@gmail.com
+password: Passwordtest2!
+
